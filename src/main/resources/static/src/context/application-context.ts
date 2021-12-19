@@ -9,9 +9,15 @@ export interface Store {
     skus: Sku[];
 }
 
+export interface StoreTiAndComm {
+    ccNumber: string;
+    ti: string;
+    commInv: string;
+    skus: Sku[];
+}
+
 export interface Sku {
     skuId: string;
-    sizeProfile: string;
     ti: string;
     commInv: string;
 }
@@ -19,12 +25,13 @@ export interface Sku {
 
 export interface IAppState {
     stores: Store[];
-
+    tiAndCommInv: StoreTiAndComm[];
 }
 
 const getInitialState = (): IAppState => {
     return {
-        stores: []
+        stores: [],
+        tiAndCommInv: []
     }
 }
 

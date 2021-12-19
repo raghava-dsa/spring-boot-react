@@ -64,7 +64,6 @@ const MainGrid: FunctionComponent<any> = () => {
       }
     
 
- 
     return (
         <div className="ag-theme-alpine" style={{ height: 400, width: 6000 }}>
             <AgGridReact

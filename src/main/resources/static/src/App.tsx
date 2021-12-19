@@ -15,67 +15,14 @@ import {
   initialState,
   Store,
 } from '../src/context/application-context';
-import { setMainGrid } from './actions/application-actions';
+import { setMainGrid, setMainGridTIandInv } from './actions/application-actions';
 import MainGrid from './main-grid';
 
 function App() {
 
   const [state, dispatch] = useReducer(appStateReducer, initialState);
 
-  const rowData = [
-    {
-      ccNumber: "12345", desc: "Celica", ti: 35000,
-      skus: [
-        {
-          skuId: "12345678",
-          sizeProfile: "0.5",
-          ti: 11
-        },
-        {
-          skuId: "12345679",
-          sizeProfile: "0.5",
-          ti: 15
-        }
-      ]
 
-    },
-    {
-      ccNumber: "67890", desc: "Mondeo", ti: 32000,
-      skus: [
-        {
-          skuId: "5678911",
-          sizeProfile: "0.5",
-          ti: 11
-        },
-        {
-          skuId: "5678912",
-          sizeProfile: "0.5",
-          ti: 15
-        }
-      ]
-
-    },
-    {
-      ccNumber: "111213", desc: "Boxter", ti: 72000,
-      skus: [
-        {
-          skuId: "7891341",
-          sizeProfile: "0.5",
-          ti: 11
-        },
-        {
-          skuId: "7891342",
-          sizeProfile: "0.5",
-          ti: 15
-        },
-        {
-          skuId: "7891343",
-          sizeProfile: "0.5",
-          ti: 15
-        }
-      ]
-    }
-  ];
 
   React.useEffect(() => {
     console.warn("==load==");
@@ -84,24 +31,46 @@ function App() {
       .then((res) => res.json())
       .then((json) => {
         dispatch(setMainGrid(json));
+
+        console.warn(json);
+        json.forEach(element => {
+          console.warn(element.ccNumber);
+          fetch(
+            "http://localhost:8081/api/getNewStoresTIAndCommInv",
+            {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json, text/plain',
+                'Content-Type': 'application/json;charset=UTF-8'
+              },
+              body: JSON.stringify({ ccs: [element.ccNumber] })
+            }
+          ).then((res) => res.json())
+            .then((json1) => {
+              dispatch(setMainGridTIandInv(json1));
+            });
+
+        });
+
+
       });
-  // dispatch(setMainGrid(rowData));
+    // dispatch(setMainGrid(rowData));
 
-}, []);
+  }, []);
 
 
 
-return (
-  <ApplicationContext.Provider
-    value={{
-      state,
-      dispatch,
-    }}
-  >
+  return (
+    <ApplicationContext.Provider
+      value={{
+        state,
+        dispatch,
+      }}
+    >
 
-    <MainGrid />
-  </ApplicationContext.Provider>
-);
+      <MainGrid />
+    </ApplicationContext.Provider>
+  );
 
 }
 
