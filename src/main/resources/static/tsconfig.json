@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "types": ["node", "cypress"],
+    "paths": {
+      "Assets": ["src/assets/"],
+      "Components": ["src/app/components/"],
+      "Pages": ["src/app/pages/"],
+      "Services": ["src/app/services/"],
+      "Store": ["src/app/redux-store/"]
+      // Allows for better profiling with ReactDevTools
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "**/static/*", "stylesheets"]
+}

@@ -1,0 +1,94 @@
+[
+  {
+    "ccNumber": "12345",
+    "desc": "Celica",
+    "ti": null,
+    "commInv": null,
+    "skus": [
+      {
+        "skuId": "12345678",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      },
+      {
+        "skuId": "12345679",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      }
+    ]
+  },
+  {
+    "ccNumber": "67890",
+    "desc": "Mondeo",
+    "ti": null,
+    "commInv": null,
+    "skus": [
+      {
+        "skuId": "5678911",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      },
+      {
+        "skuId": "5678912",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      }
+    ]
+  },
+  {
+    "ccNumber": "111213",
+    "desc": "Boxter",
+    "ti": null,
+    "commInv": null,
+    "skus": [
+      {
+        "skuId": "7891341",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      },
+      {
+        "skuId": "7891342",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      },
+      {
+        "skuId": "7891343",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      }
+    ]
+  },
+  {
+    "ccNumber": "51525",
+    "desc": "Boxter",
+    "ti": null,
+    "commInv": null,
+    "skus": [
+      {
+        "skuId": "5152511",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      },
+      {
+        "skuId": "51525111",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      },
+      {
+        "skuId": "5152577",
+        "sizeProfile": "0.5",
+        "ti": null,
+        "commInv": null
+      }
+    ]
+  }
+]

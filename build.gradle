@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.2.RELEASE'
+	id "io.spring.dependency-management" version "1.0.8.RELEASE"
+	id "com.moowork.node" version "1.3.1"
+	id 'java'
+}
+
+node {
+    version = '14.18.2'
+    yarnVersion = '1.22.4'
+    download = true
+    nodeModulesDir = file("${project.rootDir}/src/main/resources/static")
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+task installFrontEndDependencies(type: YarnTask) {
+    args = ['install']
+}
+task buildFrontEnd(type: YarnTask, dependsOn: installFrontEndDependencies) {
+    logging.captureStandardOutput LogLevel.INFO
+    inputs.files(fileTree("${project.rootDir}/src/resources/main/static/node_modules"))
+    inputs.files(fileTree("${project.rootDir}/src/main/resources/static"))
+    inputs.file("${project.rootDir}/src/main/resources/static/package.json")
+    inputs.file("${project.rootDir}/src/main/resources/static/tsconfig.json")
+    args = ['build']
+}
+
+bootRun.dependsOn buildFrontEnd
